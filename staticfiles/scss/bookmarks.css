@@ -1,0 +1,117 @@
+/* General container styling */
+.main_sec {
+  max-width: 900px;
+  padding: 2rem;
+  background: transparent;
+  border-radius: 12px;
+}
+
+/* Bookmark header styling */
+.Bookmark-header {
+  margin-bottom: 1.5rem;
+}
+.Bookmark-header h1 {
+  color: #0ba4af;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.Bookmark-header p {
+  color: #000000;
+  font-size: 1rem;
+}
+
+/* Bookmark items */
+.bookmark-list {
+  list-style: none;
+  padding: 0;
+}
+.bookmark-list .bookmark-item {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid #8ef1f8;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.bookmark-list .bookmark-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+}
+.bookmark-list .bookmark-item .blog-title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #0ba4af;
+  font-weight: 600;
+}
+.bookmark-list .bookmark-item .blog-title a {
+  text-decoration: none;
+  color: #0ba4af;
+}
+.bookmark-list .bookmark-item .blog-title a:hover {
+  color: #08777f;
+}
+.bookmark-list .bookmark-item small {
+  display: block;
+  color: #f7f7f7;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+}
+.bookmark-list .bookmark-item .blog-info {
+  text-align: right;
+}
+.bookmark-list .bookmark-item .blog-info .author {
+  color: #000000;
+  font-weight: bold;
+}
+.bookmark-list .bookmark-item .blog-info .views {
+  font-weight: normal;
+  color: #000000;
+}
+.bookmark-list .bookmark-item .btn-view,
+.bookmark-list .bookmark-item .btn-delete {
+  margin-top: 1rem;
+  align-self: flex-end;
+  color: #0ba4af;
+  border-color: #0ba4af;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.bookmark-list .bookmark-item .btn-view:hover,
+.bookmark-list .bookmark-item .btn-delete:hover {
+  color: white;
+  background-color: #0ba4af;
+}
+.bookmark-list .text-center {
+  color: #2C3E50;
+  font-style: italic;
+  padding: 1.5rem 0;
+}
+
+.featured-image-container {
+  margin: 15px 0;
+}
+
+.featured-image {
+  width: 200px;
+  height: 120px;
+  border: 2px solid #0ba4af;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.modal {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.fade {
+  transition: opacity 0s !important;
+}
+
+.modal.fade {
+  transition: opacity 0s !important;
+}/*# sourceMappingURL=bookmarks.css.map */

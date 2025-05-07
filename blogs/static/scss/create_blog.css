@@ -1,0 +1,119 @@
+body {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+h1 {
+  color: #0ba4af;
+  font-weight: 600;
+  border-bottom: 2px solid #0ba4af;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #2C3E50;
+}
+
+input, textarea, select {
+  border: 2px solid #2C3E50;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  color: #000000;
+}
+
+textarea {
+  resize: none;
+}
+
+.btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #0ba4af;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #08777f;
+}
+
+.btn-secondary {
+  background-color: #2C3E50;
+  border: none;
+}
+.btn-secondary:hover {
+  background-color: #3e5871;
+}
+
+.btn-warning {
+  background-color: #ffcc00;
+  border: none;
+}
+.btn-warning:hover {
+  background-color: #cca300;
+}
+
+.messages {
+  margin-top: 20px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.messages li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.messages .success {
+  background-color: #5eebf5;
+}
+
+.messages .error {
+  background-color: #ff9999;
+}
+
+.note-editor .note-toolbar {
+  background: #f8f9fa;
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.note-btn {
+  padding: 6px 12px;
+  font-size: 16px;
+}
+
+.note-editable {
+  min-height: 300px;
+  padding: 15px;
+  background: white;
+}/*# sourceMappingURL=create_blog.css.map */

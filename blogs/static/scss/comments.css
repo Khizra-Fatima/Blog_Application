@@ -1,0 +1,65 @@
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.comments-header h1 {
+  color: #0ba4af;
+  font-weight: bold;
+  border-bottom: 2px solid #0ba4af;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+.comments-list {
+  padding: 0;
+  list-style: none;
+}
+
+.comment-item {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  transition: all 0.2s ease;
+}
+.comment-item:hover {
+  background-color: #ecf1f5;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.comment-item .comment-text {
+  max-width: 85%;
+}
+.comment-item .comment-content {
+  font-size: 1.1rem;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.comment-item .blog-link {
+  color: #0ba4af;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.comment-item .blog-link:hover {
+  color: #08777f;
+  text-decoration: underline;
+}
+.comment-item .text-muted {
+  font-size: 0.9rem;
+  color: #507192;
+  display: block;
+  margin-top: 5px;
+}
+
+.text-center {
+  text-align: center;
+}/*# sourceMappingURL=comments.css.map */

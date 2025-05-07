@@ -1,0 +1,245 @@
+// Colors
+$text-color: #000000;
+$secondary-text-color: #f7f7f7;
+$primary-color: #0ba4af;
+$secondary-color: #2C3E50;
+$bg-color: #ffffff;
+$secondary-bg-color: #080808;
+
+
+// Navbar Styling
+.navbar {
+    background-color: #ffffff;
+    padding: 0.5rem 1rem;
+  
+    .navbar-brand {
+        font-weight: bold;
+        color: $primary-color !important; // Primary color
+        font-size: 1.5rem;
+  
+        &:hover {
+            color: darken($primary-color, 10%);
+        }
+    }
+  
+    .nav-link {
+        color: $secondary-color; // Secondary color
+        font-size: 1.07rem;
+        font-weight: 500;
+        margin-right: 1rem;
+        transition: color 0.3s ease;
+  
+        &:hover {
+            color: $primary-color;
+        }
+    }
+  
+    .navbar-toggler {
+        border-color: rgba(0, 0, 0, 0.1);
+        &:focus {
+            outline: none;
+        }
+  
+        .navbar-toggler-icon {
+            background-color: $primary-color; // Customize the toggler icon to match primary color
+        }
+    }
+  
+    .navbar-collapse {
+        justify-content: flex-end;
+    }
+  }
+  
+  // Responsiveness for small devices
+  @media (max-width: 991px) {
+    .navbar-nav .nav-item {
+        margin-bottom: 1rem;
+    }
+  }
+  
+  
+  
+  
+  .hero {
+    position: relative;
+    height: 50vh; /* Adjust the height as needed */
+    overflow: hidden;
+  }
+  
+  .hero-image {
+    background-image: url('/static/images/hero_image.jpg'); /* Add your hero image path */
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.54); /* Dark overlay */
+    z-index: 1; /* Ensure overlay is on top */
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2; /* Ensure content is above the overlay */
+    color: white; /* Text color for better visibility */
+    padding: 20px;
+
+    h1 {
+        font-size: 4.5em;
+    }
+
+    .intro {
+        margin-top: 1.2em;
+        font-size: 1.3em;
+    }
+
+    .cta {
+        background-color: $primary-color;
+        padding: 1em;
+        font-size: 1em;
+        color: white;
+        cursor: auto;
+        border: none;
+        border-radius: 8px;
+
+        &:hover {
+            color: white;
+        }
+    }
+  }
+  
+  .card_section {
+    .container-fluid {
+      max-width: 80%;
+    }
+  }
+  
+  .card {
+    transition: transform 0.3s;
+  
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    h5 {
+      a {
+        color: $primary-color;
+        font-size: 0.9em;
+      }
+    }
+  }
+  
+  .card-title {
+    font-size: 1.25rem; /* Adjust title size */
+  }
+  
+  .card-text {
+    font-size: 0.9rem; /* Adjust text size */
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  // Footer Styling
+  .footer {
+    margin-top: 5em;
+    background-color: #f8f9fa;
+    padding-top: 2rem;
+  
+    h5 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: $secondary-color;
+    }
+  
+    p {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+  
+    ul {
+        padding-left: 0;
+  
+        li {
+            list-style: none;
+            margin-bottom: 0.5rem;
+  
+            a {
+                color: #2C3E50;
+                font-weight: 500;
+                font-size: 1rem;
+                text-decoration: none;
+                transition: color 0.3s ease;
+  
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+  
+    .footer-bottom {
+        background-color: $primary-color;
+        color: #ffffff;
+        font-size: 0.9rem;
+  
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    }
+  }
+
+
+
+
+
+
+  .pagination-container {
+    text-align: center;
+    margin-top: 20px;
+
+    .pagination-btn {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 0 5px;
+        font-size: 16px;
+        color: $secondary-text-color;
+        background-color: $primary-color;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background 0.3s ease, transform 0.2s ease;
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+            transform: scale(1.05);
+        }
+
+        &.prev {
+            background-color: $secondary-color;
+        }
+
+        &.next {
+            background-color: lighten($primary-color, 10%);
+        }
+    }
+
+    .pagination-info {
+        font-size: 16px;
+        font-weight: bold;
+        color: $text-color;
+        margin: 0 10px;
+    }
+}
+
+  
+  

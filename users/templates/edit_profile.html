@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Edit Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'scss/edit_profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="page-title">Edit Profile</h1>
+
+    <!-- Profile Image and Bio Update Section -->
+    <div class="profile-section card p-4 mb-4 shadow-sm">
+        <h2 class="section-title">Change Profile Image</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group text-center">
+                <img src="{{ user.profile.profile_image.url }}" alt="Current Profile Image" class="rounded-circle mb-3 profile-img">
+                <label for="profile_image" class="form-label"></label>
+                {{ profile_form.profile_image }}
+            </div>
+
+            <!-- Bio Field -->
+            <div class="form-group mt-4">
+                <label for="bio" class="form-label">Bio:</label>
+                {{ profile_form.bio }}
+            </div>
+
+            <button type="submit" name="profile_submit" class="btn btn-primary mt-3">Update Profile</button>
+        </form>
+    </div>
+
+    <!-- Password Change Section -->
+    <div class="password-section card p-4 mb-4 shadow-sm">
+        <h2 class="section-title">Change Password</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ password_form.as_p }}
+            <button type="submit" name="password_submit" class="btn btn-primary">Change Password</button>
+        </form>
+    </div>
+
+    <!-- Email Change Section -->
+    <div class="email-section card p-4 mb-4 shadow-sm">
+        <h2 class="section-title">Change Email</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ email_form.as_p }}
+            <button type="submit" name="email_submit" class="btn btn-primary">Change Email</button>
+        </form>
+    </div>
+
+    <!-- Error Messages and Success Messages -->
+    {% if messages %}
+        <ul class="messages list-unstyled">
+            {% for message in messages %}
+                <li class="alert {{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Logout Button -->
+    <div class="account-settings mt-3" style="margin-bottom: 3em;">
+        <a href="{% url 'user_profile' user.username %}" class="text-white">Back to Profile</a>
+    </div>
+    <p style="color: white;">sada</p>
+</div>
+{% endblock %}

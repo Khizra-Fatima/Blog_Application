@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Your Blogs{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'scss/user_blogs.css' %}">
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}" style="color: #0ba4af;">ME BLOG</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'user_profile' profile_user.username %}">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<h1>{{ profile_user.username }}'s Blogs</h1>
+
+<div class="filter-buttons">
+    <a href="?status=draft" class="btn btn-secondary">Draft</a>
+    <a href="?status=published" class="btn btn-primary">Published</a>
+</div>
+
+{% if blogs %}
+<ul class="blog-list">
+    {% for blog in blogs %}
+    <li class="blog-item">
+        <!-- Display Featured Image if exists -->
+        {% if blog.featured_image %}
+        <img src="{{ blog.featured_image.url }}" alt="Featured Image" class="featured-image">
+        {% endif %}
+
+        <div class="blog-details">
+            <!-- Blog Title -->
+            <h2 class="blog-title">
+                <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+            </h2>
+
+            <!-- Blog Excerpt -->
+            <p class="blog-excerpt">{{ blog.short_description }}</p>
+
+         
+            <p class="blog-views">Views: {{ blog.views }}</p>
+
+            <p class="estimated_reading_time">Estimated Reading time: {{ blog.estimate_read_time }} min</p>
+            
+
+            <!-- Blog Tags -->
+            <p class="blog-tags">
+                Tags:
+                {% for tag in blog.tags.all %}
+                <span class="badge badge-primary">#{{ tag.name }}</span>
+                {% endfor %}
+            </p>
+
+            <!-- Blog Actions (Edit/Delete) -->
+            {% if request.user == blog.author %}
+            <div class="blog-actions">
+                <a href="{% url 'edit_blog' blog.id %}" class="btn btn-edit"><i class="fas fa-edit"></i></a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal{{ blog.id }}" class="btn btn-delete">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </div>
+            {% endif %}
+
+
+            <!-- Modal for Deletion -->
+            <div class="modal fade" id="deleteModal{{ blog.id }}" tabindex="-1" role="dialog"
+                aria-labelledby="deleteModalLabel{{ blog.id }}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel{{ blog.id }}">Confirm Deletion</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete the blog post "{{ blog.title }}"?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <form method="POST" action="{% url 'delete_blog' blog.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Published Date -->
+            <small class="published-date">Published on: {{ blog.created_at|date:"F d, Y" }}</small>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+{% if has_blogs %}
+<p class="no-blogs-message">No blogs found in this category.</p>
+{% else %}
+<p class="no-blogs-message">You haven't created any blogs yet.</p>
+{% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Blog's Detail{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'scss/blog_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="blog-detail-container">
+    <!-- Blog Title -->
+    <h1 class="blog-title">{{ blog.title }}</h1>
+
+    <!-- Blog Content -->
+    <div class="blog-content">
+        <p>{{ blog.content }}</p>
+    </div>
+
+
+    <!-- Reaction Section -->
+    <div class="reaction-section">
+        <button class="btn reaction-btn like-btn" data-reaction="1"><i class="bi bi-hand-thumbs-up-fill"></i> Like
+            |<span id="like-count">{{ total_likes }}</span></button>
+
+        <button class="btn reaction-btn dislike-btn" data-reaction="-1"><i class="bi bi-hand-thumbs-down-fill"></i>
+            Dislike
+            |<span id="dislike-count">{{ total_dislikes }}</span>
+        </button>
+    </div>
+    <p>Views: {{ blog.views }}</p>
+
+    <!-- Comments Section -->
+    <div class="comments-section">
+        <h3>Comments</h3>
+        <ul id="comments-list">
+            {% for comment in comments %}
+            <li id="comment-{{ comment.id }}">
+                <strong>{{ comment.user.username }}</strong> said:
+                <span class="comment-content">{{ comment.content }}</span>
+                ({{ comment.created_at|date:"F d, Y" }})
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Add New Comment Form -->
+        <form id="comment-form" class="comment-form">
+            <textarea id="comment-content" class="form-control" placeholder="Add a comment..." required></textarea>
+            <button type="submit" class="btn btn-secondary mt-2">Comment</button>
+        </form>
+    </div>
+
+    <!-- Blog Metadata -->
+    <div class="blog-meta">
+        <small>Published on: {{ blog.created_at|date:"F d, Y" }}</small><br>
+        <small>Author: {{ blog.author.username }}</small>
+    </div>
+
+    <!-- Tags Section -->
+    {% if blog.tags.all %}
+    <div class="tags-container">
+        <p>Tags:</p>
+        <div class="tags-list">
+            {% for tag in blog.tags.all %}
+            <span class="badge tag">#{{ tag.name }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script>
+    document.querySelectorAll(".reaction-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            let blogId = "{{ blog.id }}";  // Ensure this value is correct
+            let reaction = this.getAttribute("data-reaction");
+
+            console.log(`Sending request to: /blog/${blogId}/like_dislike/`); // Debugging
+
+            fetch(`/blog/blog/${blogId}/like_dislike/`, {
+                method: "POST",
+                headers: { "X-CSRFToken": "{{ csrf_token }}" },
+                body: new URLSearchParams({ reaction: reaction })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status !== "error") {
+                        document.getElementById("like-count").textContent = data.total_likes;
+                        document.getElementById("dislike-count").textContent = data.total_dislikes;
+                    }
+                });
+        });
+    });
+
+
+    $(document).ready(function () {
+        // Event delegation for editing comments
+        $(document).on('click', '.edit-comment-btn', function () {
+            var commentId = $(this).data('comment-id');  // Get the comment ID from the data attribute
+            editComment(commentId);
+        });
+
+        // Event listener for adding new comments
+        $('#comment-form').on('submit', function (event) {
+            event.preventDefault();
+            var content = $('#comment-content').val();
+            var blogId = '{{ blog.id }}';  // Get the current blog ID
+
+            $.ajax({
+                url: `/blog/comment/${blogId}/`,
+                type: 'POST',
+                data: {
+                    'content': content,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}',
+                },
+                success: function (response) {
+                    if (response.success) {  // Ensure 'success' is returned in the response
+                        var commentHTML = `
+                        <li id="comment-${response.comment_id}">
+                            <span class="comment-content"><strong>${response.user}</strong> said: ${response.comment} (${response.created_at})</span>
+                        </li>`;
+                        // Append new comment and re-initialize modals for the new one
+                        $('#comments-list').append(commentHTML);
+                        $('#comment-content').val('');  // Clear textarea
+
+                        // Re-initialize Bootstrap modal for the newly added comment
+                        var newlyAddedModal = document.getElementById(`deleteModal-${response.comment_id}`);
+                        var modalInstance = new bootstrap.Modal(newlyAddedModal);
+                    }
+                },
+                error: function () {
+                    alert('Error submitting comment');
+                }
+            });
+        });
+    });
+
+
+
+    // Helper function to get CSRF token
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>
+{% endblock %}

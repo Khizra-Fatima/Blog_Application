@@ -1,0 +1,154 @@
+$text-color: #000000;
+$secondary-text-color: #f7f7f7;
+$primary-color: #0ba4af;
+$secondary-color: #2C3E50;
+$bg-color: #ffffff;
+$secondary-bg-color: #080808;
+
+
+
+// Navbar Styling
+.navbar {
+    background-color: $bg-color!important;
+    padding: 0.5rem 1rem;
+  
+    .navbar-brand {
+        font-weight: bold;
+        color: $primary-color !important; // Primary color
+        font-size: 1.5rem;
+  
+        &:hover {
+            color: darken($primary-color, 10%);
+        }
+    }
+  
+    .nav-link {
+        color: #5e83a8; // Secondary color
+        font-size: 1rem;
+        font-weight: 500;
+        margin-right: 1rem;
+        transition: color 0.3s ease;
+  
+        &:hover {
+            color: $primary-color;
+        }
+    }
+  
+    .navbar-toggler {
+        border-color: rgba(0, 0, 0, 0.1);
+        &:focus {
+            outline: none;
+        }
+  
+        .navbar-toggler-icon {
+            background-color: $primary-color; // Customize the toggler icon to match primary color
+        }
+    }
+  
+    .navbar-collapse {
+        justify-content: flex-end;
+    }
+  }
+
+
+
+
+
+.row {
+    height: 100vh;
+}
+
+.profile-info {
+    background: $secondary-color;
+    height: 100vh;
+    padding: 20px 37px;
+    margin-bottom: 20px; /* Space between profile info and user activity */
+}
+
+h2 {
+    margin-bottom: 20px;
+    border-bottom: 2px solid $primary-color;
+    padding-bottom: 10px;
+}
+
+.profile_heading {
+    font-size: 1.7em;
+    color: $secondary-text-color;
+}
+
+.activity-heading {
+    color: $primary-color;
+}
+
+.profile-image {
+    border: 3px solid $primary-color; /* Border around the profile image */
+}
+
+.btn {
+    margin: 5px 0; /* Vertical margin only for buttons */
+    width: 80%; /* Full-width buttons */
+    padding: 10px;
+}
+
+.btn-primary {
+    background: $primary-color;
+    border: 2px solid $primary-color;
+
+    &:hover {
+        border: 2px solid $primary-color;
+        background: #076e75;
+    }
+}
+
+
+.list-unstyled {
+    margin-top: 3em;
+    margin-bottom: 5em;
+    text-align: left;
+    padding: 0 25px;
+
+    li {
+        border-bottom: 1px solid white;
+        margin-bottom: 1.3em;
+        a {
+            color: $primary-color;
+        }
+    }
+}
+
+p {
+    color: $secondary-text-color;
+}
+
+span {
+    color: $primary-color;
+}
+
+.account-settings {
+    text-align: left;
+    padding-left: 25px;
+}
+
+
+.user-activity {
+    height: 100vh;
+    background-color: #f9f9f9; /* Light background for the activity section */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.activity-box {
+    background-color: white; /* White background for activity list */
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.list-group-item {
+    border: none;
+    background-color: transparent; /* Transparent background for list items */
+}
+
+
+.activity-para {
+    color: $text-color;
+}
