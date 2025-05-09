@@ -1,0 +1,10 @@
+asgiref==3.8.1
+bleach==6.2.0
+Django==5.1.6
+django-guardian==2.4.0
+django-js-asset==3.0.1
+django-summernote==0.8.20.0
+pillow==11.1.0
+sqlparse==0.5.3
+tzdata==2025.1
+webencodings==0.5.1
