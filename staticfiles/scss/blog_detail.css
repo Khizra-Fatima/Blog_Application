@@ -1,0 +1,173 @@
+.blog-detail-container {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.blog-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0ba4af;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.featured-image-container {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.featured-image-container .featured-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.blog-content {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #000000;
+  margin-bottom: 1.5rem;
+}
+
+.blog-meta {
+  font-size: 0.9rem;
+  color: #f7f7f7;
+  background-color: #080808;
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.blog-meta small {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.tags-container {
+  margin-bottom: 1.5rem;
+}
+.tags-container p {
+  font-size: 1.2rem;
+  color: #0ba4af;
+  font-weight: 600;
+}
+.tags-container .tags-list .tag {
+  background-color: #0ba4af;
+  color: white;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.blog-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+.blog-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+.blog-actions .btn.btn-edit {
+  background-color: #0ba4af;
+  color: white;
+  border: none;
+}
+.blog-actions .btn.btn-edit:hover {
+  background-color: #08777f;
+}
+.blog-actions .btn.btn-edit i {
+  margin-right: 0.5rem;
+}
+.blog-actions .btn.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+}
+.blog-actions .btn.btn-delete:hover {
+  background-color: #d62c1a;
+}
+.blog-actions .btn.btn-delete i {
+  margin-right: 0.5rem;
+}
+
+.modal-content .modal-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #222222;
+  color: #2C3E50;
+}
+.modal-content .modal-header .modal-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.modal-content .modal-body {
+  font-size: 1rem;
+  color: #000000;
+}
+.modal-content .modal-footer .btn-secondary {
+  background-color: #2C3E50;
+  color: white;
+}
+.modal-content .modal-footer .btn-secondary:hover {
+  background-color: #3e5871;
+}
+.modal-content .modal-footer .btn-danger {
+  background-color: #e74c3c;
+}
+.modal-content .modal-footer .btn-danger:hover {
+  background-color: #d62c1a;
+}
+
+.reaction-section {
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.reaction-section .reaction-btn {
+  background-color: #080808;
+  color: #000000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+.reaction-section .reaction-btn:hover {
+  background-color: #151515;
+}
+.reaction-section .like-btn {
+  background-color: #0ba4af;
+  color: white;
+}
+.reaction-section .like-btn:hover {
+  background-color: #098e97;
+}
+.reaction-section .like-btn:focus {
+  color: white !important;
+}
+.reaction-section .dislike-btn {
+  background-color: #2C3E50;
+  color: white;
+}
+.reaction-section .dislike-btn:hover {
+  background-color: #233140;
+}
+.reaction-section .dislike-btn:focus {
+  color: white !important;
+}/*# sourceMappingURL=blog_detail.css.map */

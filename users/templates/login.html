@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Log In{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'scss/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="login-form">
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="row w-100">
+            <div class="col-lg-6 col-md-6 col-12 p-0">
+                <div class="login-pri text-center">
+                    <h3>WELCOME TO</h3>
+                    <h1><span>Me</span> Blog</h1>
+                    <p>Join a community of writers and readers where ideas come to life. Share your thoughts, and stay connected with a global audience.</p>
+
+                    <!-- Display form-wide errors -->
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <form method="post">
+                        {% csrf_token %}
+
+                        <div class="input-icon">
+                            <span class="fa fa-user icon"></span>
+                            {{ form.username }}
+                            {{ form.username.errors }}
+                        </div>
+                        
+                        <div class="input-icon password-container">
+                            <span class="fas fa-lock icon"></span>
+                            {{ form.password }}
+                            {{ form.password.errors }}
+                            <span class="show-hide">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+
+                        <div class="login-btn">
+                            <button type="submit">LOG IN</button>
+                        </div>
+                    </form>
+
+                    <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up Now</a></p>
+                </div>
+            </div>
+
+            <div class="login-sec col-lg-6 col-md-6 col-12 text-center">
+                <h1>Me Blog</h1>
+                <p>Explore a wide range of insightful articles, personal stories, and thought-provoking content. Start your journey today and become part of something bigger.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const passwordField = document.getElementById("id_password");
+        const showHideBtn = document.querySelector(".show-hide i");
+        const showHideContainer = document.querySelector(".show-hide");
+
+        if (passwordField) {
+            // Initially hide the eye icon
+            showHideContainer.style.display = "none";
+
+            // Show the eye icon only when typing starts
+            passwordField.addEventListener("input", function () {
+                if (passwordField.value.length > 0) {
+                    showHideContainer.style.display = "block";
+                } else {
+                    showHideContainer.style.display = "none";
+                }
+            });
+
+            // Toggle password visibility
+            showHideBtn.addEventListener("click", function () {
+                if (passwordField.type === "password") {
+                    passwordField.type = "text";
+                    showHideBtn.classList.remove("fa-eye");
+                    showHideBtn.classList.add("fa-eye-slash");
+                } else {
+                    passwordField.type = "password";
+                    showHideBtn.classList.remove("fa-eye-slash");
+                    showHideBtn.classList.add("fa-eye");
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

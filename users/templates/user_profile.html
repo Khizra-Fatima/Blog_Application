@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Your Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'scss/user_profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}" style="color: #0ba4af;">ME BLOG</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="row">
+    <div class="col-lg-2 col-md-5 col-sm-5 col-12 profile-info text-center">
+        <h2 class="mb-4 profile_heading">{{ user.username }}'s Profile</h2>
+        {% if user.profile.profile_image %}
+        <img src="{{ user.profile.profile_image.url }}" alt="Profile Image" class="profile-image"
+            style="height: 150px; width: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;" />
+        {% endif %}
+        {% if user.profile.bio %}
+            <p><strong><span>Bio:</span></strong> {{ user.profile.bio }}</p>
+        {% endif %}
+        <p><strong><span>Email:</span></strong> {{ user.email }}</p>
+        <p><strong><span>Joined:</span></strong> {{ user.date_joined|date:"F d, Y" }}</p>
+
+
+        <ul class="list-unstyled">
+            <li><a href="{% url 'edit_profile' user.id %}">Edit Profile</a></li>
+            <li><a href="{% url 'create_blog' %}">Create New Blog</a></li>
+            <li><a href="{% url 'user_blogs' user.username%}">My Blogs</a></li>
+            <li><a href="{% url 'bookmarked_blog' %}">Bookmarks</a></li>
+            <li><a href="{% url 'user_comments' %}">Comments</a></li>
+        </ul>
+
+        <div class="account-settings mt-3">
+            <a href="#" class="btn btn-primary">Account Settings</a>
+            <a href="{% url 'logout' %}" class="btn btn-secondary">Logout</a>
+        </div>
+    </div>
+
+    <div class="col-lg-10 col-md-7 col-sm-7 col-12 user-activity">
+        <h2 class="activity-heading">Recent Activity</h2>
+        <div class="activity-box">
+            {% if bookmarks or comments or likedislikes %}
+            <ul class="list-group">
+                <!-- Display Bookmarks -->
+                {% for bookmark in bookmarks %}
+                <li class="list-group-item">
+                    <strong>You Bookmarked this Blog: </strong>
+                    <a href="{% url 'blog_detail' bookmark.blog.id %}" class="text-primary">{{ bookmark.blog.title }}</a>
+                    <small class="text-muted">Bookmarked on: {{ bookmark.created_at|date:"F d, Y" }}</small>
+                </li>
+                {% endfor %}
+
+                <!-- Display Comments -->
+                {% for comment in comments %}
+                <li class="list-group-item">
+                    <strong>{{ comment.content }}: </strong>
+                    <a href="{% url 'blog_detail' comment.blog.id %}" class="text-primary">{{ comment.blog.title }}</a>
+                    <small class="text-muted">Commented on: {{ comment.created_at|date:"F d, Y" }}</small>
+                </li>
+                {% endfor %}
+
+                <!-- Display Likes and Dislikes -->
+                {% for likedislike in likedislikes %}
+                {% if likedislike.reaction == 1 %}
+                <li class="list-group-item">
+                    <strong>You Like this Blog: </strong>
+                    <a href="{% url 'blog_detail' likedislike.blog.id %}" class="text-primary">{{ likedislike.blog.title }}</a>
+                    <small class="text-muted">Liked on: {{ likedislike.created_at|date:"F d, Y" }}</small>
+                </li>
+                {% elif likedislike.reaction == -1 %}
+                <li class="list-group-item">
+                    <strong>You Dislike this Blog: </strong>
+                    <a href="{% url 'blog_detail' likedislike.blog.id %}" class="text-primary">{{ likedislike.blog.title }}</a>
+                    <small class="text-muted">Disliked on: {{ likedislike.created_at|date:"F d, Y" }}</small>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="activity-para">No recent activity yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

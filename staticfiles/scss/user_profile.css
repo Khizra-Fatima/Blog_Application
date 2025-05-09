@@ -1,0 +1,128 @@
+.navbar {
+  background-color: #ffffff !important;
+  padding: 0.5rem 1rem;
+}
+.navbar .navbar-brand {
+  font-weight: bold;
+  color: #0ba4af !important;
+  font-size: 1.5rem;
+}
+.navbar .navbar-brand:hover {
+  color: #08777f;
+}
+.navbar .nav-link {
+  color: #5e83a8;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+.navbar .nav-link:hover {
+  color: #0ba4af;
+}
+.navbar .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.navbar .navbar-toggler:focus {
+  outline: none;
+}
+.navbar .navbar-toggler .navbar-toggler-icon {
+  background-color: #0ba4af;
+}
+.navbar .navbar-collapse {
+  justify-content: flex-end;
+}
+
+.row {
+  height: 100vh;
+}
+
+.profile-info {
+  background: #2C3E50;
+  height: 100vh;
+  padding: 20px 37px;
+  margin-bottom: 20px; /* Space between profile info and user activity */
+}
+
+h2 {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #0ba4af;
+  padding-bottom: 10px;
+}
+
+.profile_heading {
+  font-size: 1.7em;
+  color: #f7f7f7;
+}
+
+.activity-heading {
+  color: #0ba4af;
+}
+
+.profile-image {
+  border: 3px solid #0ba4af; /* Border around the profile image */
+}
+
+.btn {
+  margin: 5px 0; /* Vertical margin only for buttons */
+  width: 80%; /* Full-width buttons */
+  padding: 10px;
+}
+
+.btn-primary {
+  background: #0ba4af;
+  border: 2px solid #0ba4af;
+}
+.btn-primary:hover {
+  border: 2px solid #0ba4af;
+  background: #076e75;
+}
+
+.list-unstyled {
+  margin-top: 3em;
+  margin-bottom: 5em;
+  text-align: left;
+  padding: 0 25px;
+}
+.list-unstyled li {
+  border-bottom: 1px solid white;
+  margin-bottom: 1.3em;
+}
+.list-unstyled li a {
+  color: #0ba4af;
+}
+
+p {
+  color: #f7f7f7;
+}
+
+span {
+  color: #0ba4af;
+}
+
+.account-settings {
+  text-align: left;
+  padding-left: 25px;
+}
+
+.user-activity {
+  height: 100vh;
+  background-color: #f9f9f9; /* Light background for the activity section */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.activity-box {
+  background-color: white; /* White background for activity list */
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.list-group-item {
+  border: none;
+  background-color: transparent; /* Transparent background for list items */
+}
+
+.activity-para {
+  color: #000000;
+}/*# sourceMappingURL=user_profile.css.map */

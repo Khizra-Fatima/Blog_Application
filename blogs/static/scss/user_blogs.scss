@@ -1,0 +1,237 @@
+$text-color: #000000;
+$secondary-text-color: #f7f7f7;
+$primary-color: #0ba4af;
+$secondary-color: #2C3E50;
+$bg-color: #ffffff;
+$secondary-bg-color: #080808;
+
+
+
+
+
+
+
+
+// Navbar Styling
+.navbar {
+    background-color: $secondary-text-color;
+    padding: 0.5rem 1rem;
+  
+    .navbar-brand {
+        font-weight: bold;
+        color: $primary-color !important; // Primary color
+        font-size: 1.5rem;
+  
+        &:hover {
+            color: darken($primary-color, 10%);
+        }
+    }
+  
+    .nav-link {
+        color: #5e83a8; // Secondary color
+        font-size: 1rem;
+        font-weight: 500;
+        margin-right: 1rem;
+        transition: color 0.3s ease;
+  
+        &:hover {
+            color: $primary-color;
+        }
+    }
+  
+    .navbar-toggler {
+        border-color: rgba(0, 0, 0, 0.1);
+        &:focus {
+            outline: none;
+        }
+  
+        .navbar-toggler-icon {
+            background-color: $primary-color; // Customize the toggler icon to match primary color
+        }
+    }
+  
+    .navbar-collapse {
+        justify-content: flex-end;
+    }
+  }
+
+
+
+// Blog Page Container
+h1 {
+    text-align: center;
+    color: #2C3E50; // Deep Navy
+    margin-bottom: 2rem;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+
+    .btn {
+        margin: 0 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background-color 0.3s ease;
+
+        &.btn-primary {
+            background-color: #0ba4af; // Primary Color
+            color: white;
+
+            &:hover {
+                background-color: darken(#0ba4af, 10%);
+            }
+        }
+
+        &.btn-secondary {
+            background-color: #95a5a6; // Gray color for drafts
+            color: white;
+
+            &:hover {
+                background-color: darken(#95a5a6, 10%);
+            }
+        }
+    }
+}
+
+// Blog List Styling
+.blog-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.blog-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .featured-image {
+        max-width: 150px;
+        margin-right: 1.5rem;
+        border-radius: 5px;
+    }
+
+    .blog-details {
+        flex: 1;
+
+        .blog-title a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2C3E50;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .blog-status {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-actions {
+            margin-bottom: 0.75rem;
+
+            .btn-edit,
+            .btn-delete {
+                color: #0ba4af;
+                margin-right: 0.75rem;
+                font-size: 1.2rem;
+
+                &:hover {
+                    color: darken(#0ba4af, 10%);
+                }
+            }
+
+            .btn-delete {
+                color: #e74c3c;
+
+                &:hover {
+                    color: darken(#e74c3c, 10%);
+                }
+            }
+        }
+
+        .blog-excerpt {
+            margin: 1rem 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #7f8c8d;
+        }
+
+        .blog-tags {
+            margin-bottom: 1rem;
+            span {
+                margin-right: 0.5rem;
+                padding: 0.25rem 0.75rem;
+                border-radius: 5px;
+                background-color: #0ba4af;
+                color: white;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+            }
+        }
+
+        .published-date {
+            font-size: 0.85rem;
+            color: #95a5a6;
+        }
+    }
+}
+
+// No Blogs Message
+.no-blogs-message {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 1.25rem;
+    margin-top: 2rem;
+}
+
+// Modal Styling for Delete Confirmation
+.modal-content {
+    .modal-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #e0e0e0;
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #2C3E50;
+        }
+    }
+
+    .modal-body {
+        font-size: 1rem;
+        color: #7f8c8d;
+    }
+
+    .modal-footer {
+        .btn-secondary {
+            background-color: #95a5a6;
+
+            &:hover {
+                background-color: darken(#95a5a6, 10%);
+            }
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+
+            &:hover {
+                background-color: darken(#e74c3c, 10%);
+            }
+        }
+    }
+}

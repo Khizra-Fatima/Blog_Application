@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'scss/signup.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="signup-form">
+    <div class="container p-0">
+        <div class="signup-box text-center">
+            <h3>WELCOME TO</h3>
+            <h1><span>Me</span> Blog</h1>
+            <h2>Create Account</h2>
+
+            <!-- Display form-wide errors -->
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="input-icon">
+                    <span class="fa fa-user icon"></span>
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
+
+                <div class="input-icon">
+                    <span class="fas fa-envelope icon"></span>
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+
+                <div class="input-icon password-container">
+                    <span class="fas fa-lock icon"></span>
+                    {{ form.password1 }}
+                    {{ form.password1.errors }}
+                    <span class="show-hide">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
+
+                <div class="input-icon password-container">
+                    <span class="fas fa-check-circle icon"></span>
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                    <span class="show-hide">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
+
+                <div class="signup-btn">
+                    <button type="submit">SIGN UP</button>
+                </div>
+            </form>
+
+            <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const passwordFields = document.querySelectorAll("input[type='password']");
+        const showHideButtons = document.querySelectorAll(".show-hide i");
+
+        passwordFields.forEach((field, index) => {
+            const showHideBtn = showHideButtons[index];
+            const showHideContainer = showHideBtn.parentElement;
+
+            // Initially hide the eye icon
+            showHideContainer.style.display = "none";
+
+            // Show the eye icon when typing starts
+            field.addEventListener("input", function () {
+                if (field.value.length > 0) {
+                    showHideContainer.style.display = "block";
+                } else {
+                    showHideContainer.style.display = "none";
+                }
+            });
+
+            // Toggle password visibility
+            showHideBtn.addEventListener("click", function () {
+                if (field.type === "password") {
+                    field.type = "text";
+                    showHideBtn.classList.remove("fa-eye");
+                    showHideBtn.classList.add("fa-eye-slash");
+                } else {
+                    field.type = "password";
+                    showHideBtn.classList.remove("fa-eye-slash");
+                    showHideBtn.classList.add("fa-eye");
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

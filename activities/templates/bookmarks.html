@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Your Bookmarks{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'scss/bookmarks.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Your Bookmarked Blogs</h2>
+    
+    {% if bookmarked %}
+    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#clearBookmarkModal">
+        Clear All Bookmarks
+    </button>
+    
+    <div class="row mt-4">
+        {% for bookmark in bookmarked %}
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ bookmark.blog.title }}</h5>
+                    <p class="card-text">{{ bookmark.blog.content|truncatewords:20 }}</p>
+                    <a href="{% url 'blog_detail' bookmark.blog.id %}" class="btn btn-primary">Read More</a>
+                    
+                    <!-- Delete Single Bookmark Button -->
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBookmarkModal{{ bookmark.id }}">
+                        Remove Bookmark
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Delete Modal -->
+        <div class="modal fade" id="deleteBookmarkModal{{ bookmark.id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Remove Bookmark</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to remove this bookmark?
+                    </div>
+                    <div class="modal-footer">
+                        <form method="post" action="{% url 'delete_bookmark_blog' bookmark.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+    <p class="text-muted">You haven't bookmarked any blogs yet.</p>
+    {% endif %}
+
+    <!-- Clear All Bookmarks Modal -->
+    <div class="modal fade" id="clearBookmarkModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Clear All Bookmarks</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to remove all bookmarks?
+                </div>
+                <div class="modal-footer">
+                    <form method="post" action="{% url 'clear_bookmark' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Clear All</button>
+                    </form>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
