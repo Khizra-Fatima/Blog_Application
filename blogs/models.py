@@ -67,16 +67,6 @@ class Blog(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
 class LikeDislike(models.Model):
     LIKE = 1
     DISLIKE = -1
@@ -93,7 +83,7 @@ class LikeDislike(models.Model):
     class Meta:
         unique_together = ('user', 'blog')  #ensures a user can only like/dislike a blog once
         indexes = [
-            models.Index(fields=['user', 'blog']),  #optimized queries
+            models.Index(fields=['user', 'blog']),
         ]
 
     def __str__(self):
@@ -109,8 +99,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Comment by {self.user.username} on {self.blog.title}'
-    
-
 
 
 
