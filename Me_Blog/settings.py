@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -35,7 +34,6 @@ AUTHENTICATION_BACKENDS = (
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -129,13 +127,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Directory where collectstatic will collect static files for production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
-# Additional directories where Django will look for static files
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # This is where your development static files are stored
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 
