@@ -99,21 +99,4 @@ textarea {
 
 .messages .error {
   background-color: #ff9999;
-}
-
-.note-editor .note-toolbar {
-  background: #f8f9fa;
-  border: 1px solid #ccc;
-  padding: 8px;
-}
-
-.note-btn {
-  padding: 6px 12px;
-  font-size: 16px;
-}
-
-.note-editable {
-  min-height: 300px;
-  padding: 15px;
-  background: white;
 }/*# sourceMappingURL=create_blog.css.map */
