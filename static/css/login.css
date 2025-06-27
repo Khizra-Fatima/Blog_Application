@@ -100,7 +100,7 @@
   text-decoration: underline;
 }
 .login-form .login-sec {
-  background: linear-gradient(rgba(220, 248, 250, 0.5), rgba(7, 102, 109, 0.8)), url("/static/images/login.jpg") no-repeat center center;
+  background: linear-gradient(rgba(220, 248, 250, 0.5), rgba(7, 102, 109, 0.8)), url("../images/login.jpg") no-repeat center center;
   background-size: cover;
   display: flex;
   flex-direction: column;

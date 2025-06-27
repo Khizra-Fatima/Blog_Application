@@ -45,7 +45,7 @@
 }
 
 .hero-image {
-  background-image: url("/static/images/hero_image.jpg"); /* Add your hero image path */
+  background-image: url("../images/hero_image.jpg"); /* Add your hero image path */
   background-size: cover;
   background-position: center;
   height: 100%;
