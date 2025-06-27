@@ -17,7 +17,7 @@ body {
 }
 
 body {
-  font-family: "Quicksand", "Roboto Regular", "sans-serif";
+  font-family: "Quicksand", sans-serif;
   overflow-x: hidden;
 }
 
