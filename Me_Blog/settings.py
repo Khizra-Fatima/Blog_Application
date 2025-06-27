@@ -59,7 +59,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-USE_X_FORWARDED_HOST = True
 ROOT_URLCONF = 'Me_Blog.urls'
 
 TEMPLATES = [
@@ -127,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 FORCE_SCRIPT_NAME = '/blog'
+USE_X_FORWARDED_HOST = True
 
 STATIC_URL = '/blog/static/'
 
