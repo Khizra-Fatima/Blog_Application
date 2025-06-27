@@ -128,7 +128,7 @@ USE_TZ = True
 
 FORCE_SCRIPT_NAME = '/blog'
 
-STATIC_URL = '/static/'
+STATIC_URL = '/blog/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -139,7 +139,7 @@ STATICFILES_DIRS = [
 
 
 # Media files (uploaded files by users)
-MEDIA_URL = '/media/'
+MEDIA_URL = '/blog/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
