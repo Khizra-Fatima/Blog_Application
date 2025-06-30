@@ -16,7 +16,6 @@
             <h1><span>Me</span> Blog</h1>
             <h2>Create Account</h2>
 
-            <!-- Display form-wide errors -->
             {% if form.non_field_errors %}
                 <div class="alert alert-danger">
                     {{ form.non_field_errors }}
@@ -77,10 +76,8 @@
             const showHideBtn = showHideButtons[index];
             const showHideContainer = showHideBtn.parentElement;
 
-            // Initially hide the eye icon
             showHideContainer.style.display = "none";
 
-            // Show the eye icon when typing starts
             field.addEventListener("input", function () {
                 if (field.value.length > 0) {
                     showHideContainer.style.display = "block";
@@ -89,7 +86,7 @@
                 }
             });
 
-            // Toggle password visibility
+            //Toggle password visibility
             showHideBtn.addEventListener("click", function () {
                 if (field.type === "password") {
                     field.type = "text";

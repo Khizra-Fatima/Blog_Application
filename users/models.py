@@ -13,9 +13,9 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-    # Resize the uploaded image
+    #Resize the uploaded image
     def save(self, *args, **kwargs):
-        # Check if the instance already exists (to avoid creating duplicates)
+        
         if self.pk:
             try:
                 old_profile = Profile.objects.get(pk=self.pk)
@@ -26,7 +26,7 @@ class Profile(models.Model):
         else:
             self.resize_image()
 
-        super().save(*args, **kwargs)  # Save the instance only once
+        super().save(*args, **kwargs)
 
     def resize_image(self):
         if self.profile_image and hasattr(self.profile_image, 'file'):
@@ -36,9 +36,7 @@ class Profile(models.Model):
                 output_size = (300, 300)
                 img.thumbnail(output_size)
 
-                # Save the resized image in memory
                 img_io = io.BytesIO()
                 img.save(img_io, format=img.format)
 
-                # Save resized image
                 self.profile_image.save(self.profile_image.name, ContentFile(img_io.getvalue()), save=False)

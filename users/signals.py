@@ -8,8 +8,7 @@ from .models import Profile
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
-        #ensure a profile is created for each new user
-        #profile, _ = Profile.objects.get_or_create(user=instance)
+        
         profile = Profile.objects.create(user=instance)
 
         #assign object-level permissions

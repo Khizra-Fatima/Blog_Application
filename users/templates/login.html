@@ -17,7 +17,6 @@
                     <h1><span>Me</span> Blog</h1>
                     <p>Join a community of writers and readers where ideas come to life. Share your thoughts, and stay connected with a global audience.</p>
 
-                    <!-- Display form-wide errors -->
                     {% if form.non_field_errors %}
                         <div class="alert alert-danger">
                             {{ form.non_field_errors }}
@@ -60,6 +59,9 @@
 </section>
 {% endblock %}
 
+
+
+
 {% block script %}
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -68,10 +70,8 @@
         const showHideContainer = document.querySelector(".show-hide");
 
         if (passwordField) {
-            // Initially hide the eye icon
             showHideContainer.style.display = "none";
 
-            // Show the eye icon only when typing starts
             passwordField.addEventListener("input", function () {
                 if (passwordField.value.length > 0) {
                     showHideContainer.style.display = "block";
@@ -80,7 +80,7 @@
                 }
             });
 
-            // Toggle password visibility
+            //toggle password visibility
             showHideBtn.addEventListener("click", function () {
                 if (passwordField.type === "password") {
                     passwordField.type = "text";

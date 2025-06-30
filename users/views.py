@@ -117,7 +117,7 @@ def user_signup(request):
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
-                # Specify backend explicitly
+                #Specify backend
                 login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
                 return redirect('home')
