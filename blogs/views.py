@@ -39,8 +39,7 @@ def create_new_blog(request):
             messages.success(request, 'Your blog has been created successfully!')
             return redirect('user_blogs', username=request.user.username)
         else:
-            #print the error
-            print(form.errors)
+            print(form.errors) #print the error
             messages.error(request, 'There was an error creating your blog. Please fix the issues and try again.')
     else:
         form = BlogForm()
