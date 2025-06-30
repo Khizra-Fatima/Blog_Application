@@ -7,8 +7,8 @@ def home(request):
     blog_list = Blog.objects.filter(publish_status='published').order_by('-created_at')
     paginator = Paginator(blog_list, 8)  #get 8 blogs for one page
 
-    page_number = request.GET.get('page')  #get the page number from the request
-    page_obj = paginator.get_page(page_number)  #get the related page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     user_bookmark_ids = set()
     if request.user.is_authenticated:
