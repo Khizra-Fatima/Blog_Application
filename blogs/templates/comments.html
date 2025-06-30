@@ -24,14 +24,14 @@
                 <small class="text-muted">Commented on: {{ comment.created_at|date:"F d, Y" }}</small>
             </div>
             {% if comment.user == request.user %}
-            <!-- Edit Button -->
+            <!-- Edit button -->
             <button class="btn btn-sm btn-primary" onclick="editComment('{{ comment.id }}')">Edit</button>
     
-            <!-- Delete Button -->
+            <!-- Delete button -->
             <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
                 data-bs-target="#deleteModal-{{ comment.id }}">Delete</button>
     
-            <!-- Delete Modal -->
+            <!-- Delete modal -->
             <div class="modal fade" id="deleteModal-{{ comment.id }}" tabindex="-1"
                 aria-labelledby="deleteModalLabel-{{ comment.id }}" aria-hidden="true">
                 <div class="modal-dialog">

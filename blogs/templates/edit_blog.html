@@ -16,7 +16,7 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- Title Field with Error Display -->
+        <!-- Title field with error display -->
         <div class="form-group">
             <label for="id_title">Title:</label>
             {{ form.title }}
@@ -27,7 +27,7 @@
             {% endif %}
         </div>
 
-        <!-- Category Field with Error Display -->
+        <!-- Category field with error display -->
         <div class="form-group">
             <label for="id_category">Category:</label>
             {{ form.category }}
@@ -44,7 +44,7 @@
             {{ form.content }}
         </div>
 
-        <!-- Tags Field with Error Display -->
+        <!-- Tags field with error display -->
         <div class="form-group">
             <label for="id_tags">Tags (e.g., #techblog #lifestyleblog):</label>
             <input type="text" name="tags" id="id_tags" class="form-control" value="{{ blog.tags.all|join:' #' }}">
@@ -55,7 +55,7 @@
             {% endif %}
         </div>
 
-        <!-- Featured Image Field with Error Display -->
+        <!-- Featured Image field with error display -->
         <div class="form-group">
             <label for="id_featured_image">Featured Image:</label>
             {{ form.featured_image }}
@@ -66,7 +66,7 @@
             {% endif %}
         </div>
 
-        <!-- Short Description Field with Error Display -->
+        <!-- Short Description field with error display -->
         <div class="form-group">
             <label for="id_short_description">Short Description:</label>
             {{ form.short_description }}
@@ -88,7 +88,7 @@
         </div>
     </form>
 
-    <!-- Error and Success Messages -->
+    <!-- Error and Success Msgs -->
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}

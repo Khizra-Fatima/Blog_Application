@@ -67,7 +67,7 @@
                 {% endfor %}
             </p>
 
-            <!-- Blog Actions (Edit/Delete) -->
+            <!-- Blog actions (Edit/Delete) -->
             {% if request.user == blog.author %}
             <div class="blog-actions">
                 <a href="{% url 'edit_blog' blog.id %}" class="btn btn-edit"><i class="fas fa-edit"></i></a>
@@ -102,7 +102,7 @@
             </div>
 
 
-            <!-- Published Date -->
+            <!-- Published date -->
             <small class="published-date">Published on: {{ blog.created_at|date:"F d, Y" }}</small>
         </div>
     </li>

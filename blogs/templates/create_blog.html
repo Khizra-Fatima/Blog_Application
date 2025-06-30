@@ -6,6 +6,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/create_blog.css' %}">
+
 <!-- Summernote CSS -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
 
@@ -21,7 +22,7 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- Title Field with Error Display -->
+        <!-- Title field with error display -->
         <div class="form-group">
             <label for="id_title">Title:</label>
             {{ form.title }}
@@ -33,7 +34,7 @@
         </div>
 
 
-        <!-- Category Field with Error Display -->
+        <!-- Category field with error display -->
         <div class="form-group">
             <label for="id_category">Category:</label>
             {{ form.category }}
@@ -52,7 +53,7 @@
         </div>
 
 
-        <!-- Tags Field with Error Display -->
+        <!-- Tags field with error display -->
         <div class="form-group">
             <label for="id_tags">Tags (e.g., #techblog #lifestyleblog):</label>
             {{ form.tags }}
@@ -64,7 +65,7 @@
         </div>
 
 
-        <!-- Featured Image Field with Error Display -->
+        <!-- Featured Image field with error display -->
         <div class="form-group">
             <label for="id_featured_image">Featured Image:</label>
             {{ form.featured_image }}
@@ -75,7 +76,7 @@
             {% endif %}
         </div>
 
-        <!-- Excerpt Field with Error Display -->
+        <!-- Short Description field with error display -->
         <div class="form-group">
             <label for="id_short_description">Short Description:</label>
             {{ form.short_description }}
@@ -97,7 +98,7 @@
         </div>
     </form>
 
-    <!-- Error Messages and Success Messages -->
+    <!-- Error and Success Msgs -->
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -118,7 +119,7 @@
 <script>
     $(document).ready(function () {
         $('#id_content').summernote({
-            height: 300,  // Set the height of all editors
+            height: 300,
             toolbar: [
                 ['style', ['style']],
                 ['font', ['bold', 'underline', 'clear']],
